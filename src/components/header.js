@@ -13,11 +13,11 @@ const NavLink = styled(Link)`
   text-decoration: none;
 
   &.current-page {
-      border-bottom: 2px solid #222;
+    border-bottom: 2px solid #222;
   }
 
   &:last-of-type {
-      margin-right: 0;
+    margin-right: 0;
   }
 `;
 
@@ -31,14 +31,20 @@ const Header = () => (
       padding: 0.5rem calc((100vw - 550px) / 2);
     `}
   >
-    <NavLink to="/" fontWeight="bold">FEM workshop</NavLink>
+    <NavLink to="/" fontWeight="bold">
+      FEM workshop
+    </NavLink>
     <nav
       css={css`
         margin-top: 0;
       `}
     >
-      <NavLink to="/" activeClassName="current-page">Home</NavLink>
-      <NavLink to="/about/" activeClassName="current-page">About</NavLink>
+      <NavLink to="/" activeClassName="current-page">
+        Home
+      </NavLink>
+      <NavLink to="/about/" activeClassName="current-page">
+        About
+      </NavLink>
     </nav>
   </header>
 );
