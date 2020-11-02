@@ -1,28 +1,38 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import useSiteMetadata from './use-sitemetadata';
 
 const usePosts = () => {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-        allMdx {
-          nodes {
-            frontmatter {
-              title
-              slug
-              author
+      allMdx {
+        nodes {
+          frontmatter {
+            title
+            author
+            slug
+            image {
+              sharp: childImageSharp {
+                fluid(
+                  maxWidth: 100
+                  maxHeight: 100
+                  duotone: { shadow: "#663399", highlight: "#ddbbff" }
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
-            excerpt
           }
+          excerpt
         }
       }
-    `);
-
-    return data.allMdx.nodes.map(post => ({
-        title: post.frontmatter.title,
-        author: post.frontmatter.author,
-        slug: post.frontmatter.slug,
-        excerpt: post.excerpt,
-    }))
+    }
+  `);
+  return data.allMdx.nodes.map(post => ({
+    title: post.frontmatter.title,
+    author: post.frontmatter.author,
+    slug: post.frontmatter.slug,
+    image: post.frontmatter.image,
+    excerpt: post.excerpt,
+  }));
 };
 
 export default usePosts;

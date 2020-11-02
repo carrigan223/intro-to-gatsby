@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/core';
-import useSiteMetadata from '../hooks/use-sitemetadata';
 
 
 const Wave = () => {
